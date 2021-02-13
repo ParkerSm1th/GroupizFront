@@ -174,3 +174,17 @@ label {
     padding: 30px;
     margin-top: 35px;
 }
+
+@media only screen and (max-width: 765px) {
+    .question {
+        margin-bottom: 210px;
+    }
+
+    .leftQuestion {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .rightQuestion {
+        border-radius: 0 0 10px 10px;
+    }
+}
