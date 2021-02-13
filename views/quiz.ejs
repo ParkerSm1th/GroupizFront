@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+    var quizCode = "<%= quizCode  %>";
+    var quizName;
+    var questions;
+    var error = false;
+    $.get("http://localhost:3200/quiz/" + quizCode + "/name", function(data, status){
+        console.log(data);
+        name = data.name;
+        $("#quizName").html(data.name);
+        $("#quizCode").html(data.quizCode);
+    }).fail(function(e) {
+        $("#quizName").html("Error");
+        $("#quizCode").html("Error");
+        error = true;
+    });
+    function updateQuestions() {
+        if (!error) {
+            var url = "http://localhost:3200/quiz/" + quizCode + "/questions";
+            $.get("http://localhost:3200/quiz/" + quizCode + "/questions", function(data, status){
+                    questions = data.questions;
+                    var str = '<ul class="questionsUl">'
+                    var i = 0;
+                    var ic = 0;
+                    var color;
+                    questions.forEach(function(question) {
+                        i++;
+                        switch(ic) {
+                            case 0: 
+                                color = "red";
+                                ic++
+                                break;
+                            case 1: 
+                                color = "blue";
+                                ic++
+                                break;
+                            case 2: 
+                                color = "green";
+                                ic++
+                                break;
+                            case 3: 
+                                color = "purple";
+                                ic = 0;
+                                break;
+                        }
+                        var answers = '<ul class="answerUl">';
+                        question.answers.forEach(function(answer) {
+                            answers += `
+                                <li class="answerLi dark-${color}"><p>${answer.answer}</p></li>
+                            `;
+                        });
+                        
+                        answers += `
+                        <li onClick="addAnswer('${question.questionId}')"class="clickable answerLi dark-${color}"><p>+</p></li>
+                        </ul>`;
+                        str += `
+                            <li>
+                                <div class="question">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12 leftQuestion dark-${color}">
+                                            <div class="questionIndex ${color}">
+                                                <h1>${i}</h1>
+                                            </div>
+                                            <div class="questionText">
+                                                <h1>${question.questionString}</h1>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 rightQuestion ${color}">
+                                            ${answers}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        `;
+                    });
+
+                    str += '</ul>';
+                    $("#questions").html(str);
+                });
+        } else {
+
+        }
+    }
+    updateQuestions();
+    setInterval(updateQuestions, 5000)
+
+    function addAnswer(id) {
+        var answer = prompt("Please enter your answer");
+        $.post("http://localhost:3200/quiz/" + quizCode + "/questions/" + id + "/addAnswer", {
+            answer: answer,
+            user: "Test"
+        },
+        function(data, status){
+            //alert("Attempted to add");
+        });
+    }
+
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
+</script>
+
+<%- include ('../partials/header') %>
+<div class="quizHeader">
+    <h1 class="quizName"><span id="quizName"><i class="far fa-spinner-third fa-spin"></i></span></h1>
+    <h2 class="quizLink clickable" onclick="copyToClipboard('.quizLink')"><i class="fas fa-copy"></i> https://grpiz.io/<span class="quizCode" id="quizCode"><i class="far fa-spinner-third fa-spin"></i></span></h2>
+</div>
+<div class="questions" id="questions">
+    
+</div>
+<%- include ('../partials/footer') %>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
