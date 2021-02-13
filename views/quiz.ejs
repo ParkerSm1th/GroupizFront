@@ -22,7 +22,7 @@
             $.get("http://31.220.63.223:3200/quiz/" + quizCode + "/name", function(data, status){
    
             }).fail(function(e) {
-                $("#quizName").html("Error, this quiz had been deleted, redirecting..");
+                $("#quizName").html("Error, redirecting..");
                 $("#quizCode").html("");
                 error = true;
                 setTimeout(function() {
