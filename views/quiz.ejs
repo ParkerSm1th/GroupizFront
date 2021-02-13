@@ -6,17 +6,29 @@
     var questions;
     var error = false;
     $.get("http://31.220.63.223:3200/quiz/" + quizCode + "/name", function(data, status){
-        console.log(data);
         name = data.name;
         $("#quizName").html(data.name);
         $("#quizCode").html(data.quizCode);
     }).fail(function(e) {
-        $("#quizName").html("Error");
-        $("#quizCode").html("Error");
+        $("#quizName").html("Error, redirecting..");
+        $("#quizCode").html("");
         error = true;
+        setTimeout(function() {
+            window.location.href = "http://31.220.63.223:3000/";
+        }, 3000);
     });
     function updateQuestions() {
         if (!error) {
+            $.get("http://31.220.63.223:3200/quiz/" + quizCode + "/name", function(data, status){
+   
+            }).fail(function(e) {
+                $("#quizName").html("Error, redirecting..");
+                $("#quizCode").html("");
+                error = true;
+                setTimeout(function() {
+                    window.location.href = "http://31.220.63.223:3000/";
+                }, 3000);
+            });
             var url = "http://31.220.63.223:3200/quiz/" + quizCode + "/questions";
             $.get("http://31.220.63.223:3200/quiz/" + quizCode + "/questions", function(data, status){
                     questions = data.questions;
