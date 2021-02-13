@@ -22,12 +22,12 @@
             $.get("http://31.220.63.223:3200/quiz/" + quizCode + "/name", function(data, status){
    
             }).fail(function(e) {
-                $("#quizName").html("Error, redirecting..");
+                $("#quizName").html("Error, this quiz had been deleted, redirecting..");
                 $("#quizCode").html("");
                 error = true;
                 setTimeout(function() {
                     window.location.href = "http://31.220.63.223:3000/";
-                }, 3000);
+                }, 6000);
             });
             var url = "http://31.220.63.223:3200/quiz/" + quizCode + "/questions";
             $.get("http://31.220.63.223:3200/quiz/" + quizCode + "/questions", function(data, status){
