@@ -17,6 +17,7 @@
             window.location.href = "http://grpiz.io/";
         }, 3000);
     });
+    var timeLeft = 0;
     function updateQuestions() {
         if (!error) {
             $.get("https://api.grpiz.io/quiz/" + quizCode + "/name", function(data, status){
@@ -94,18 +95,17 @@
                     str += '</ul>';
                     $("#questions").html(str);
                 });
+                timeLeft = 5;
+                $("#timeLeft").html(timeLeft);
         } else {
 
         }
     }
     updateQuestions();
-    var timeLeft = 6;
+    
     function updateTimeLeft() {
         if (timeLeft != 0) {
             timeLeft -= 1;
-            $("#timeLeft").html(timeLeft);
-        } else {
-            timeLeft = 5;
             $("#timeLeft").html(timeLeft);
         }
     }
