@@ -245,7 +245,7 @@ label {
     right: 25px;
 }
 
-.timeLeft {
+#timeLeft {
     color: #fff !important;
 }
 
