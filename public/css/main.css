@@ -175,6 +175,30 @@ label {
     margin-top: 35px;
 }
 
+.brighttheme-notice {
+    background-color: #fb5151b0;
+    border: 0 solid #ff6767;
+    color: #fff;
+}
+
+.brighttheme-success {
+    background-color: #19bf5fbf;
+    border: 0 solid #2DCC70;
+    color: #fff;
+}
+
+.ui-pnotify-icon, .ui-pnotify-icon span {
+    display: block;
+    float: left;
+    margin-right: .3em;
+    font-size: 20px;
+    margin-top: 4px;
+}
+
+.ui-pnotify.ui-pnotify-fade-normal.ui-pnotify.ui-pnotify-move {
+    min-width: 200px;
+}
+
 @media only screen and (max-width: 765px) {
     .question {
         margin-bottom: 210px;
@@ -188,3 +212,5 @@ label {
         border-radius: 0 0 10px 10px;
     }
 }
+
+

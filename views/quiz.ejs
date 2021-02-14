@@ -104,7 +104,13 @@
             user: "Test"
         },
         function(data, status){
-            //alert("Attempted to add");
+            new PNotify({
+                title: "Success!",
+                text: "Your answer has been added!\nIt will show up soon.",
+                icon: 'fal fa-check',
+                type: "success",
+                delay: 5000
+            });
         });
     }
 

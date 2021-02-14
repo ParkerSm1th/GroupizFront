@@ -26,7 +26,13 @@
         }).fail(function(e) {
             var body = e.responseJSON;
             if (body.code == "invalid_data") {
-                console.log(body.errors[0].message);
+                new PNotify({
+                    title: "Whoops!",
+                    text: body.errors[0].message,
+                    icon: 'fal fa-times',
+                    type: "danger",
+                    delay: 5000
+                });
             }
         })
     }
