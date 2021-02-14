@@ -10,7 +10,7 @@
         $("#quizName").html(data.name);
         $("#quizCode").html(data.quizCode);
         document.title = "Groupiz - " + data.name;
-    }).fail(function(e) {
+    }).fail(function(e) { 
         $("#quizName").html("Error, redirecting..");
         $("#quizCode").html("");
         error = true;
