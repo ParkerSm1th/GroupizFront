@@ -15,7 +15,7 @@
         var quizName = $("#name").val();
         var quizCode = $("#quizCode").val();
         var questionCount = $("#questionCount").val();
-        $.post("http://31.220.63.223:3200/quiz/create", {
+        $.post("https://api.grpiz.io/quiz/create", {
             quizName: quizName,
             quizCode: quizCode,
             questionCount: questionCount,

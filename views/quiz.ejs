@@ -5,7 +5,7 @@
     var quizName;
     var questions;
     var error = false;
-    $.get("http://31.220.63.223:3200/quiz/" + quizCode + "/name", function(data, status){
+    $.get("https://api.grpiz.io/quiz/" + quizCode + "/name", function(data, status){
         name = data.name;
         $("#quizName").html(data.name);
         $("#quizCode").html(data.quizCode);
@@ -19,7 +19,7 @@
     });
     function updateQuestions() {
         if (!error) {
-            $.get("http://31.220.63.223:3200/quiz/" + quizCode + "/name", function(data, status){
+            $.get("https://api.grpiz.io/quiz/" + quizCode + "/name", function(data, status){
    
             }).fail(function(e) {
                 $("#quizName").html("Error, redirecting..");
@@ -29,8 +29,8 @@
                     window.location.href = "http://grpiz.io/";
                 }, 6000);
             });
-            var url = "http://31.220.63.223:3200/quiz/" + quizCode + "/questions";
-            $.get("http://31.220.63.223:3200/quiz/" + quizCode + "/questions", function(data, status){
+            var url = "https://api.grpiz.io/quiz/" + quizCode + "/questions";
+            $.get("https://api.grpiz.io/quiz/" + quizCode + "/questions", function(data, status){
                     questions = data.questions;
                     var str = '<ul class="questionsUl">'
                     var i = 0;
@@ -99,7 +99,7 @@
 
     function addAnswer(id) {
         var answer = prompt("Please enter your answer");
-        $.post("http://31.220.63.223:3200/quiz/" + quizCode + "/questions/" + id + "/addAnswer", {
+        $.post("https://api.grpiz.io/quiz/" + quizCode + "/questions/" + id + "/addAnswer", {
             answer: answer,
             user: "Test"
         },
