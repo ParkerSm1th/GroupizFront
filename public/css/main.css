@@ -84,11 +84,11 @@ body {
 }
 
 .dark-blue {
-    background: #3498DA;
+    background: #3498DA !important;
 }
 
 .dark-green {
-    background: #2DCC70;
+    background: #2DCC70 !important;
 }
 
 .green {
