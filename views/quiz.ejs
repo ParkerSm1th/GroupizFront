@@ -102,7 +102,7 @@
     var timeLeft = 6;
     function updateTimeLeft() {
         if (timeLeft != 0) {
-            timeLeft -= timeLeft;
+            timeLeft -= 1;
             $("#timeLeft").html(timeLeft);
         } else {
             timeLeft = 5;
