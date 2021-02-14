@@ -43,24 +43,21 @@
                 });
             }
         })
-    }
+    }  
     function joinQuiz() {
         var quizCode = $("#quizCodeOriginal").val();
         $.get("https://api.grpiz.io/quiz/" + quizCode + "/name", 
         function(data, status){
             window.location.href = "http://grpiz.io/" + quizCode;
         }).fail(function(e) {
-            var body = e.responseJSON;
-            if (body.code == "invalid_data") {
-                new PNotify({
-                    title: "Whoops!",
-                    text: "That quiz does not exist, please try another code",
-                    icon: 'fal fa-times',
-                    type: "danger",
-                    delay: 5000
-                });
-                $("#quizCodeOriginal").value = "";
-            }
+            new PNotify({
+                title: "Whoops!",
+                text: "That quiz does not exist, please try another code",
+                icon: 'fal fa-times',
+                type: "danger",
+                delay: 5000
+            });
+            $("#quizCodeOriginal").value = "";
         })
     }
 </script>
