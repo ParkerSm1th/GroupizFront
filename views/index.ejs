@@ -24,7 +24,10 @@
         function(data, status){
             window.location.href = "http://grpiz.io/quiz/" + quizCode;
         }).fail(function(e) {
-            console.log(e);
+            var body = e.responseJSON;
+            if (body.code == "invalid_data") {
+                console.log(body.errors[0].message);
+            }
         })
     }
 </script>
