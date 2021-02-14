@@ -21,6 +21,11 @@ body {
     font-weight: 500;
 }
 
+.editIcon {
+    font-size: 15px;
+    color: #ffffffad;
+}
+
 .logoA:hover {
     text-decoration: none !important;
 }
