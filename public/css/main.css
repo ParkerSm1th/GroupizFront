@@ -246,7 +246,7 @@ label {
 }
 
 .timeLeft {
-    color: #fff;
+    color: #fff !important;
 }
 
 @media only screen and (max-width: 765px) {
