@@ -75,7 +75,7 @@
                                                 <h1>${i}</h1>
                                             </div>
                                             <div class="questionText">
-                                                <h1 class="clickable" onclick="renameQuestion(${question.questionId})">${question.questionString}</h1>
+                                                <h1 class="clickable" onclick="renameQuestion(${question.questionId}, ${question.questionString})">${question.questionString}</h1>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-12 rightQuestion ${color}">
@@ -114,8 +114,8 @@
         });
     }
 
-    function renameQuestion(id) {
-        var name = prompt("Please enter the questionn's text");
+    function renameQuestion(id, og) {
+        var name = prompt("Please enter the questionn's text", og);
         $.post("https://api.grpiz.io/quiz/" + quizCode + "/questions/" + id + "/rename", {
             name: name
         },
