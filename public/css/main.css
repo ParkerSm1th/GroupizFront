@@ -238,6 +238,18 @@ label {
     .rightQuestion {
         border-radius: 0 0 10px 10px;
     }
+    .questionIndex {
+        margin: auto;
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .questionText {
+        display: block;
+        margin: auto;
+        text-align: center;
+    }
 }
 
 
