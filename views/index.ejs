@@ -23,7 +23,9 @@
         },
         function(data, status){
             window.location.href = "http://grpiz.io/quiz/" + quizCode;
-        });
+        }).fail(function(e) {
+            console.log(e);
+        })
     }
 </script>
 
