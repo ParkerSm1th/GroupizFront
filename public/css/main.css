@@ -231,6 +231,11 @@ label {
     margin-top: 50px;
 }
 
+.slow-spin {
+    -webkit-animation: fa-spin 4s infinite linear;
+    animation: fa-spin 4s infinite linear;
+  }
+
 @media only screen and (max-width: 765px) {
     .question {
         margin-bottom: 210px;
