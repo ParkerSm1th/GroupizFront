@@ -226,6 +226,11 @@ label {
     min-width: 200px;
 }
 
+.homeBoxes {
+    margin: auto;
+    margin-top: 50px;
+}
+
 @media only screen and (max-width: 765px) {
     .question {
         margin-bottom: 210px;
