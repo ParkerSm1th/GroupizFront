@@ -22,7 +22,7 @@
             hostName: "Parker" 
         },
         function(data, status){
-            window.location.href = "http://grpiz.io/quiz/" + quizCode;
+            window.location.href = "http://grpiz.io/" + quizCode;
         }).fail(function(e) {
             var body = e.responseJSON;
             if (body.code == "invalid_data") {
@@ -53,7 +53,7 @@
             <label for="quizCode">Question Count</label>
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
-                    <div class="input-group-text">https://grpiz.io/quiz/</div>
+                    <div class="input-group-text">https://grpiz.io/</div>
                 </div>
                 <input required type="text" class="form-control" id="quizCode" placeholder="Quiz Code">
             </div>
