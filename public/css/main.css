@@ -235,6 +235,7 @@ label {
     -webkit-animation: fa-spin 4s infinite linear;
     animation: fa-spin 4s infinite linear;
     margin-left: 4px;
+    font-size: 18px;
 }
 
 @media only screen and (max-width: 765px) {
