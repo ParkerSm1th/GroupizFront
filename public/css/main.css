@@ -4,6 +4,11 @@ body {
     background: #2B2D30;
     font-family: 'Share', cursive;
 }
+
+.ui-pnotify-title, .ui-pnotify-text {
+    font-family: 'Share', cursive;
+}
+
 .header {
     height: 60px;
 }
