@@ -177,7 +177,7 @@
 <%- include ('../partials/header') %>
 <div class="quizHeader">
     <h1 class="quizName"><span id="quizName"><i class="far fa-spinner-third fa-spin"></i></span></h1>
-    <h2 class="quizLink clickable" onclick="copyToClipboard('.quizLink')"><i id="clicked" class="fas fa-copy"></i> http://grpiz.io/<span class="quizCode" id="quizCode"><i class="far fa-spinner-third fa-spin"></i></span></h2>
+    <h2 class="quizLink quizLinkCopy clickable" onclick="copyToClipboard('.quizLinkCopy')"><i id="clicked" class="fas fa-copy"></i> http://grpiz.io/<span class="quizCode" id="quizCode"><i class="far fa-spinner-third fa-spin"></i></span></h2>
     <h2 class="quizLink updater">Updating in <span id="timeLeft"></span> <i class="far fa-sync-alt slow-spin"></i> </h2>
 </div>
 <div class="questions" id="questions">
