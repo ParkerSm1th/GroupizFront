@@ -99,7 +99,18 @@
         }
     }
     updateQuestions();
+    var timeLeft = 6;
+    function updateTimeLeft() {
+        if (timeLeft != 0) {
+            timeLeft -= timeLeft;
+            $("#timeLeft").html(timeLeft);
+        } else {
+            timeLeft = 5;
+            $("#timeLeft").html(timeLeft);
+        }
+    }
     setInterval(updateQuestions, 5000)
+    setInterval(updateTimeLeft, 1000)
 
     function addAnswer(id) {
         var answer = prompt("Please enter your answer");
@@ -166,6 +177,7 @@
 <div class="quizHeader">
     <h1 class="quizName"><span id="quizName"><i class="far fa-spinner-third fa-spin"></i></span></h1>
     <h2 class="quizLink clickable" onclick="copyToClipboard('.quizLink')"><i id="clicked" class="fas fa-copy"></i> http://grpiz.io/<span class="quizCode" id="quizCode"><i class="far fa-spinner-third fa-spin"></i></span></h2>
+    <h2 class="quizLink"><i class="fas fa-spinner-third fa-spin"></i> <span id="timeLeft"></span></h2>
 </div>
 <div class="questions" id="questions">
     
