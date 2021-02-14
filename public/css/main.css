@@ -234,7 +234,8 @@ label {
 .slow-spin {
     -webkit-animation: fa-spin 4s infinite linear;
     animation: fa-spin 4s infinite linear;
-  }
+    margin-right: 5px;
+}
 
 @media only screen and (max-width: 765px) {
     .question {
