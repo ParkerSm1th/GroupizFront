@@ -119,7 +119,7 @@
     }
 
     function renameQuestion(id, og) {
-        var name = prompt("Please enter the questionn's text", og);
+        var name = prompt("Please enter the question's text", og);
         $.post("https://api.grpiz.io/quiz/" + quizCode + "/questions/" + id + "/rename", {
             name: name
         },
