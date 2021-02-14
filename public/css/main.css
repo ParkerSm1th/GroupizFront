@@ -80,7 +80,7 @@ body {
 }
 
 .blue {
-    background: #2880B8;
+    background: #2880B8 !important;
 }
 
 .dark-blue {
@@ -92,7 +92,7 @@ body {
 }
 
 .green {
-    background: #29AE61;
+    background: #29AE61 !important;
 }
 
 .purple {
