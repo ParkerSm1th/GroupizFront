@@ -86,7 +86,11 @@
                             </li>
                         `;
                     });
-
+                    str += `
+                            <li>
+                                <div class="addNewQuestion clickable" onclick="newQuestion()"><i class="far fa-plus"></i></div>
+                            </li>
+                        `;
                     str += '</ul>';
                     $("#questions").html(str);
                 });
@@ -123,6 +127,19 @@
             new PNotify({
                 title: "Success!",
                 text: "You have updated the quiz text!\nIt will show up soon.",
+                icon: 'fal fa-check',
+                type: "success",
+                delay: 5000
+            });
+        });
+    }
+
+    function newQuestion() {
+        $.post("https://api.grpiz.io/quiz/" + quizCode + "/questions/new",
+        function(data, status){
+            new PNotify({
+                title: "Success!",
+                text: "You have added a new question!\nIt will show up soon.",
                 icon: 'fal fa-check',
                 type: "success",
                 delay: 5000
