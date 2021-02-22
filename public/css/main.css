@@ -120,6 +120,17 @@ body {
     border-radius: 10px;
 }
 
+.questionSpin {
+    margin: auto;
+    text-align: center;
+    margin-top: 65px;
+}
+
+.questionSpin i {
+    color: #fff;
+    font-size: 35px;
+}
+
 .leftQuestion {
     height: 100%;
     width: 100%;
