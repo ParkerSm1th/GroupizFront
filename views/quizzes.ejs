@@ -16,7 +16,7 @@
                     window.location.href = "http://grpiz.io/";
                 }, 6000);
             });
-            $.get("https://api.grpiz.io/quizzes", function(data, status){
+            $.get("https://api.grpiz.io/quizzes?count=15", function(data, status){
                     questions = data.quizzes;
                     var str = '<ul class="questionsUl">'
                     var i = 0;
@@ -70,11 +70,6 @@
                             </li>
                         `;
                     });
-                    str += `
-                            <li>
-                                <div class="addNewQuestion clickable dark-${color}"><i class="far fa-plus"></i></div>
-                            </li>
-                        `;
                     str += '</ul>';
                     $("#questions").html(str);
                 });
