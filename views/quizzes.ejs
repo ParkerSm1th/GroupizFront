@@ -16,7 +16,6 @@
                     window.location.href = "http://grpiz.io/";
                 }, 6000);
             });
-            var url = "https://api.grpiz.io/quiz/" + quizCode + "/questions";
             $.get("https://api.grpiz.io/quizzes", function(data, status){
                     questions = data.quizzes;
                     var str = '<ul class="questionsUl">'
