@@ -48,6 +48,7 @@
                         `;
                         
                         answers += `
+                        <li onClick="redirect('${question.quizCode}')"class="clickable answerLi dark-${color}"><p>Visit Quiz</p></li>
                         </ul>`;
                         str += `
                             <li>
@@ -58,7 +59,7 @@
                                                 <h1>${i}</h1>
                                             </div>
                                             <div class="questionText">
-                                                <h1 class="clickable">${question.name}/h1>
+                                                <h1 class="clickable">${question.name}</h1>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-12 rightQuestion ${color}">
@@ -94,6 +95,9 @@
     setInterval(updateQuestions, 5000)
     setInterval(updateTimeLeft, 1000)
 
+    function redirect(quizCode) {
+        window.location.href = "http://grpiz.io/" + quizCode;
+    }
 
     function copyToClipboard(element) {
         var $temp = $("<input>");
