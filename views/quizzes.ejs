@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+    var quizzes;
+    var error = false;
+    var timeLeft = 0;
+    function updateQuestions() {
+        if (!error) {
+            $.get("https://api.grpiz.io/quizzes", function(data, status){
+   
+            }).fail(function(e) {
+                $("#quizName").html("Error, redirecting..");
+                $("#quizCode").html("");
+                error = true;
+                setTimeout(function() {
+                    window.location.href = "http://grpiz.io/";
+                }, 6000);
+            });
+            var url = "https://api.grpiz.io/quiz/" + quizCode + "/questions";
+            $.get("https://api.grpiz.io/quizzes", function(data, status){
+                    questions = data.quizzes;
+                    var str = '<ul class="questionsUl">'
+                    var i = 0;
+                    var ic = 0;
+                    var color;
+                    questions.forEach(function(question) {
+                        i++;
+                        switch(ic) {
+                            case 0: 
+                                color = "red";
+                                ic++
+                                break;
+                            case 1: 
+                                color = "blue";
+                                ic++
+                                break;
+                            case 2: 
+                                color = "green";
+                                ic++
+                                break;
+                            case 3: 
+                                color = "purple";
+                                ic = 0;
+                                break;
+                        }
+                        var answers = '<ul class="answerUl">';
+                        answers += `
+                            <li class="answerLi dark-${color}"><p>Question Count: ${question.questionCount}</p></li>
+                        `;
+                        
+                        answers += `
+                        </ul>`;
+                        str += `
+                            <li>
+                                <div class="question">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12 leftQuestion dark-${color}">
+                                            <div class="questionIndex ${color}">
+                                                <h1>${i}</h1>
+                                            </div>
+                                            <div class="questionText">
+                                                <h1 class="clickable">${question.name}/h1>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 rightQuestion ${color}">
+                                            ${answers}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        `;
+                    });
+                    str += `
+                            <li>
+                                <div class="addNewQuestion clickable dark-${color}"><i class="far fa-plus"></i></div>
+                            </li>
+                        `;
+                    str += '</ul>';
+                    $("#questions").html(str);
+                });
+                timeLeft = 6;
+                $("#timeLeft").html(timeLeft);
+        } else {
+
+        }
+    }
+    updateQuestions();
+    
+    function updateTimeLeft() {
+        if (timeLeft != 0) {
+            timeLeft -= 1;
+            $("#timeLeft").html(timeLeft);
+        }
+    }
+    setInterval(updateQuestions, 5000)
+    setInterval(updateTimeLeft, 1000)
+
+
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+        $("#clicked").addClass("fa-check");
+        $("#clicked").removeClass("fa-copy");
+        setTimeout(function() {
+            $("#clicked").addClass("fa-copy");
+            $("#clicked").removeClass("fa-check");
+        }, 3000)
+    }
+</script>
+
+<%- include ('../partials/header') %>
+<div class="quizHeader">
+    <h1 class="quizName"><span id="quizName">All Quizzes</span></h1>
+    <h2 class="quizLink updater">Updating in <span id="timeLeft"></span> <i class="far fa-sync-alt slow-spin"></i> </h2>
+</div>
+<div class="questions" id="questions">
+    <div class="questionSpin">
+        <i class="far fa-spinner-third fa-spin"></i>
+    </div>
+</div>
+<%- include ('../partials/footer') %>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
